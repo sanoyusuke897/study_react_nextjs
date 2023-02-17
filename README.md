@@ -4,6 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 https://www.youtube.com/watch?v=5bI7nnrK8Q4&list=PLwM1-TnN_NN6fUhOoZyU4iZiwhLyISopO
 
 【2023-02-17】
+
 1.Reactを学ぶにはNext.jsから入ると効率が良い理由。Next.jsのセットアップからVercelへのデプロイまで！
 
 2.コンポーネントの作り方と、Next.jsでの静的ページの作り方を学ぼう
