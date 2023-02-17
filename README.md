@@ -1,5 +1,26 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+学習サイト：
+
+https://www.youtube.com/playlist?list=PLwM1-TnN_NN6fUhOoZyU4iZiwhLyISopO
+
+
+【2023-02-17】
+
+1.Reactを学ぶにはNext.jsから入ると効率が良い理由。Next.jsのセットアップからVercelへのデプロイまで！
+
+2.コンポーネントの作り方と、Next.jsでの静的ページの作り方を学ぼう
+
+3.Propsを使ってコンポーネントの表示を出し分け！
+
+4.Propsに色んなデータを渡したり、Childrenを使ってみよう！
+
+5.CSS Modulesを使うとCSSの管理が楽になる
+
+
+【2023-02-18】
+
+
 ## Getting Started
 
 First, run the development server:
