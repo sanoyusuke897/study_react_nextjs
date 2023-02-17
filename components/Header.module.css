@@ -1,0 +1,18 @@
+.header {
+    border: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+
+.anchor {
+    padding: 8px 24px;
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+.anchor:hover {
+    color: #0070f3;
+}
