@@ -151,6 +151,11 @@
   background-clip: content-box;
 }
 
+.footer {
+  text-align: center;
+  padding: 20px 0;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
