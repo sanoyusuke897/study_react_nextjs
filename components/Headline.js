@@ -1,11 +1,10 @@
 import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
-
+import classes from './Headline.module.css'
 
 export function Headline(props) {
   return (
     <>
-        <div className={styles.description}>
+        <div className={classes.description}>
           <p>
             Get started by editing&nbsp;
             {props.children}
@@ -20,7 +19,7 @@ export function Headline(props) {
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
-                className={styles.vercelLogo}
+                className={classes.vercelLogo}
                 width={100}
                 height={24}
                 priority
@@ -28,18 +27,18 @@ export function Headline(props) {
             </a>
           </div>
         </div>
-        <h1 className={styles.title}>{props.page} page</h1>
+        <h1 className={classes.title}>{props.page} page</h1>
 
-        <div className={styles.center}>
+        <div className={classes.center}>
           <Image
-            className={styles.logo}
+            className={classes.logo}
             src="/next.svg"
             alt="Next.js Logo"
             width={180}
             height={37}
             priority
           />
-          <div className={styles.thirteen}>
+          <div className={classes.thirteen}>
             <Image
               src="/thirteen.svg"
               alt="13"
