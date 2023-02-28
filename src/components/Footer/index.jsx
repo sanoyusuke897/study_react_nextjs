@@ -1,4 +1,4 @@
-import classes from "./Footer.module.css"
+import classes from "src/components/Footer/Footer.module.css"
 import { Inter } from '@next/font/google'
 
 export function Footer() {

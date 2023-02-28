@@ -1,4 +1,4 @@
-import classes from './Links.module.css'
+import classes from 'src/components/Links/Links.module.css'
 import { Inter } from '@next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
