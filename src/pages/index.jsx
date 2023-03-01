@@ -2,24 +2,26 @@ import Head from 'next/head'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
-import { useCallback, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 
 
 export default function Home() {
-  const foo = 1;
+  const [count, setCount] = useState(1); //分割代入　count = array[0], setCount = array[1]
+  // let count = 1;
 
-  const handleClick = useCallback((e) => {
-    console.log(e.target.href);
-    e.preventDefault();
-    alert(foo)
-  }, []);
+  const handleClick = (e) => {
+    setCount((count) => count +1) //アロー関数
+    // count = count +1;
+    // console.log(count);
+  };
+
+  
 
   useEffect(() => {
-    console.log("マウント時");
+    
     document.body.style.backgroundColor="lightblue"; //mount時
     return () => {
-      console.log("アンマウント時");
       document.body.style.backgroundColor=""; //unmount時
     };
   }, []);
@@ -33,10 +35,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
-      <a 
-      href="/about" onClick={handleClick}>
-        ボタン
-      </a>
+      <h1>{count}</h1>
+      <button onClick={handleClick}>ボタン</button>
       <Main page="index"/>
       <Footer />
     </>
