@@ -2,30 +2,25 @@ import Head from 'next/head'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
-import { useEffect, useState } from 'react'
-
-
+import { useCallback, useEffect, useState } from 'react'
 
 export default function Home() {
-  const [count, setCount] = useState(1); //分割代入　count = array[0], setCount = array[1]
-  // let count = 1;
 
-  const handleClick = (e) => {
-    setCount((count) => count +1) //アロー関数
-    // count = count +1;
-    // console.log(count);
-  };
+  const [count, setCount] = useState(1); 
+  //分割代入　count = array[0], setCount = array[1]
 
-  
+  const handleClick = useCallback(() => {
+    if (count < 10 ) {
+      setCount((count) => count +1) //アロー関数
+    }
+  }, [count]); //第二引数、この変数が変わった時に、この部分だけ再レンダリング（更新、処理）されます。
 
   useEffect(() => {
-    
     document.body.style.backgroundColor="lightblue"; //mount時
     return () => {
       document.body.style.backgroundColor=""; //unmount時
     };
   }, []);
-
 
   return (
     <>
