@@ -6,21 +6,41 @@ import { useCallback, useEffect, useState } from 'react'
 
 export default function Home() {
 
-  const [count, setCount] = useState(1); 
-  //分割代入　count = array[0], setCount = array[1]
+  const [count, setCount] = useState(1); //分割代入　count = array[0], setCount = array[1]
+  const [text, setText] = useState(""); //文字列
+  const [isShow, setIsShow] = useState(true); //真偽値（Boolean）
 
   const handleClick = useCallback(() => {
     if (count < 10 ) {
       setCount((count) => count +1) //アロー関数
     }
-  }, [count]); //第二引数、この変数が変わった時に、この部分だけ再レンダリング（更新、処理）されます。
-
+  }, [count]); 
+  //第二引数、この変数が変わった時に、この部分だけ再レンダリング（更新、処理）されます。 useCallback
+  
   useEffect(() => {
     document.body.style.backgroundColor="lightblue"; //mount時
     return () => {
       document.body.style.backgroundColor=""; //unmount時
     };
   }, []);
+
+  const handleChange = useCallback((e) => { 
+    if (e.target.value.length > 5) {
+      alert("5文字以内にしてください");
+      return;
+    }
+    setText(e.target.value.trim());
+  },[]);
+
+  const handleDisplay = useCallback(
+    ()=> {
+      setIsShow((isShow) => !isShow);
+        // if (isShow) {
+        //   return false;
+        // } 
+        // return isShow ? false : true;
+      },[])
+
 
   return (
     <>
@@ -30,8 +50,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
-      <h1>{count}</h1>
+      {isShow ? <h1>{count}</h1> : null} 
+      {/* JSX内if構文が使えないため、三項演算子で条件分岐する */}
       <button onClick={handleClick}>ボタン</button>
+      <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
+      <input 
+        type="text" 
+        value={text} 
+        onChange={handleChange}
+      />
       <Main page="index"/>
       <Footer />
     </>
