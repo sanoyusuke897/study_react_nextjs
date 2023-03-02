@@ -9,6 +9,7 @@ export default function Home() {
   const [count, setCount] = useState(1); //分割代入　count = array[0], setCount = array[1]
   const [text, setText] = useState(""); //文字列
   const [isShow, setIsShow] = useState(true); //真偽値（Boolean）
+  const [array, setArray] = useState([]); //配列
 
   const handleClick = useCallback(() => {
     if (count < 10 ) {
@@ -16,7 +17,7 @@ export default function Home() {
     }
   }, [count]); 
   //第二引数、この変数が変わった時に、この部分だけ再レンダリング（更新、処理）されます。 useCallback
-  
+
   const handleDisplay = useCallback(()=> {
     setIsShow((preIsShow) => !preIsShow);
       // if (isShow) {
@@ -24,6 +25,7 @@ export default function Home() {
       // } 
       // return isShow ? false : true;
     },[]);
+  
   useEffect(() => {
     document.body.style.backgroundColor="lightblue"; //mount時
     return () => {
@@ -39,14 +41,17 @@ export default function Home() {
     setText(e.target.value.trim());
   },[]);
 
-  const handleDisplay = useCallback(
-    ()=> {
-      setIsShow((isShow) => !isShow);
-        // if (isShow) {
-        //   return false;
-        // } 
-        // return isShow ? false : true;
-      },[])
+  const handleAdd = useCallback(()=> {
+    setArray((prevArray) => {
+      //const newArray = prevArray;
+      // newArray.push(1);
+      if (prevArray.some(item => item === text)) {
+        alert("同じ要素が既に存在します。")
+      }
+      const newArray = [...prevArray, text]; //スプレッド構文
+      return newArray;
+    });
+  },[text])
 
 
   return (
@@ -61,11 +66,17 @@ export default function Home() {
       {/* JSX内if構文が使えないため、三項演算子で条件分岐する */}
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
-      <input 
-        type="text" 
-        value={text} 
-        onChange={handleChange}
-      />
+      <input type="text" value={text} onChange={handleChange} />
+      <button onClick={handleAdd}>追加</button>
+      <ul>
+        {array.map(item => {
+          return (
+            <li key={item}>
+              {item}
+            </li>
+          )
+        })}
+      </ul>
       <Main page="index"/>
       <Footer />
     </>
