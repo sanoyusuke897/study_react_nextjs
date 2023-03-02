@@ -12,11 +12,18 @@ export default function Home() {
 
   const handleClick = useCallback(() => {
     if (count < 10 ) {
-      setCount((count) => count +1) //アロー関数
+      setCount((prevCount) => prevCount +1) //アロー関数
     }
   }, [count]); 
   //第二引数、この変数が変わった時に、この部分だけ再レンダリング（更新、処理）されます。 useCallback
   
+  const handleDisplay = useCallback(()=> {
+    setIsShow((preIsShow) => !preIsShow);
+      // if (isShow) {
+      //   return false;
+      // } 
+      // return isShow ? false : true;
+    },[]);
   useEffect(() => {
     document.body.style.backgroundColor="lightblue"; //mount時
     return () => {
